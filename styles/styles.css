@@ -1,0 +1,742 @@
+/* * {
+    outline: 1px solid red;
+} */
+:root {
+    --color-primary: #06168e;
+    --color-shadow: black;
+    
+    --color-background:lightskyblue;
+   --font-text: Arial, Helvetica, sans-serif;
+  }
+  *,
+  *::before,
+  *::after {
+   
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+  }
+   
+  /* Set root font-size for rem to 62.5% to change the font-size default value to 10px. */
+  html {
+    font-size: 62.5%;
+  }
+   
+  body {
+    height: 100vh;
+    max-height: 100%;
+    width: 100vw;
+    max-width: 100%;
+    scrollbar-width: none;
+    overflow-x: hidden;
+    
+   
+    /* Set font-size back to it's original 16px by using 1.6rem. */
+    font-size: 1.6rem;
+    background-color: var(--color-background);
+    
+    font-family:var(--font-text);
+
+  }
+  img,
+  picture {
+    display: block;
+    max-width: 100%;
+  }
+  
+
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0rem;
+    background-color:lightskyblue;
+   
+   
+    
+  }
+   
+  .logo {
+    font-size: 2.4rem;
+    margin:1rem;
+  }
+   
+  nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+    justify-content: flex-end;
+    
+  }
+  .menu {
+    display: none;
+    list-style: none;
+    
+    margin: 0;
+    position: relative;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    
+   
+  }
+   
+  .menu li {
+    text-align: center;
+  }
+   
+  .menu li a {
+    color: #06168e;
+    text-decoration:none;
+    text-align: center;
+    font-size:x-large;
+    font-weight:bolder;
+    display: block;
+    padding: 1rem 2rem;
+    font-family: "Roboto serif";
+  }
+   
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+  }
+   
+  .burger-menu .line {
+    width: 100%;
+    height: 0.3rem;
+    background-color:#0C168E;
+  }
+   
+ 
+   
+  @media (min-width: 48rem) {
+    .menu {
+      display: flex;
+      position: static;
+      width: auto;
+    }
+   
+    .menu li {
+      text-align: left;
+    }
+   
+    .burger-menu {
+      display: none;
+    }
+   
+
+
+  }
+   
+  @media (min-width: 64rem) {
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+   
+   
+   
+  }
+
+  @media only screen and (max-width: 600px){
+   
+    h2.home_text{
+      font-size: small;
+    }
+  }
+   
+  
+  .menu.show-menu {
+    display: block;
+  }
+
+  .countdown-timer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    width: 20rem;
+    margin: 2rem;
+  }
+   
+  .time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:var(--color-primary);
+    justify-content:space-between;
+  }
+   
+  .time h2 {
+    color: #06168e;
+  
+  }
+   
+  
+  
+  
+  
+
+  
+   
+
+
+  
+  .marquee-container {
+    overflow: hidden;
+    height: 2.5rem;
+    position: relative;
+   
+    background-color: lightskyblue;
+    
+  }
+   
+  .js-marquee {
+    display: inline-block;
+    white-space: nowrap;
+    position: absolute;
+    color:blue;
+    font-weight: bold;
+    /* align-items: center; */
+  }
+
+
+  #home_text h2{
+    
+    color: var(--color-primary);
+    text-align: center;
+    font-family:"Roboto serif";
+    font-size: 5.4rem;
+    font-style: italic;
+    font-weight: 700;
+    text-transform: uppercase;
+
+
+  }
+  #home_text p{
+    color: #000;
+
+  font-family: var(--font-text);
+  font-size: 1.7rem;
+  
+  font-weight: 400;
+
+  }
+
+
+  
+/* ---CAROUSEL---     */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  margin: auto;
+}
+
+/* Activates flexbox on image slides. */
+.carousel-slide {
+  display: flex;
+}
+
+/* Defines sizing of images. */
+.carousel-slide img {
+  width: 100%;
+  display: none;
+}
+
+/* Identifies how the images will be displayed when they are active. */
+.carousel-slide img.active {
+  display: block;
+}
+
+/* Set the positioning of the left and right arrow carousel navigation.  */
+.carousel-navigation {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+/* Defines the color of the carousel arrows navigation. The color of the arrows
+should be in the contrast with the images to make them visible. */
+.carousel-navigation .prev,
+.next {
+  color:white;
+}
+
+/* Alignments and coloring of the left and right arrow navigation. */
+.carousel-navigation button {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* The carousel bullets points alignment. */
+.carousel-bullets {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Setting up the colour of the non-active carousel bullets. You might want to
+change it according to your brand colour pallet.*/
+.carousel-bullets .bullet {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+/* Setting up the colour of the active carousel bullets. You might want to
+change it according to your brand colour pallet.*/
+.carousel-bullets .bullet.active {
+  background-color:var(--color-primary);
+}
+  
+
+  .panel-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width:100%;
+    /* height:350px; */
+    padding:0.2rem 1.6rem;
+  }
+  .panel {
+    flex: 1;
+    margin: 1rem;
+    padding: 2rem;
+    max-width: 30rem;
+    
+    border-radius: 1rem;
+    color: var(--color-primary);
+
+ position: relative; 
+   /* For positioning the button */
+  }
+
+
+   /* Add specific styles for each panel using their id */
+   #rides-games {
+    /* border: 1px solid rgba(0, 0, 0, 0.50); */
+    background-image: linear-gradient(  rgba(10, 185, 22, 0.73),
+    rgba(183, 105, 143, 0.781)),url("../images/rides\ and\ games.webp"); 
+     background-size: cover; /* Cover the entire panel */
+    background-position: center; /* Center the image in the panel */
+   }
+
+
+ .panel_button{
+    
+    display: inline-block;
+    text-align: center;
+    text-decoration:solid;
+    color:#0C168E;
+    padding:10rem 2.5rem;
+
+    font-family:roboto Verdana,Tahoma, sans-serif;
+    font-weight:900;
+    font-size: x-large;
+    
+
+  } 
+  .panel:hover{
+    transform: scale(1.1);
+    
+  }
+
+
+  
+ 
+  
+  #food-drink{
+  
+    
+    background: linear-gradient(rgba(210, 87, 10, 0.579),rgba(255, 255, 0, 0.338)),url(../images/food\ &\ drink.webp);
+    
+    background-size: cover;
+    background-position: center;
+    
+  }
+  #shows{
+   
+    background: linear-gradient(rgba(10, 210, 90, 0.247),rgba(255, 255, 0, 0.338)),url(../images/show.jpg) lightgray 50% ;
+    background-size: cover;
+    background-position: center;
+    
+  }
+  #santaland{
+   
+    background:linear-gradient(rgba(140, 10, 210, 0.256),rgba(255, 255, 0, 0.338)), url(../images/santaland.webp) lightgray 50% ;
+    background-size: cover;
+    background-position: center;
+    
+  }
+  
+  
+
+
+.video-container{
+ 
+  background: url(../images/video.webp);
+  background-size: 100%;
+
+  background-position:center;
+  /* background-color: rgba(211, 211, 211, 0.378); */
+  height: 80vh;
+  width:100%;
+  background-repeat: no-repeat;
+  position: relative;
+
+  
+ 
+}
+ 
+
+.video-text {
+  
+  margin: 50px;
+  padding:10px 10px 10px 10px;
+  background-color: white;
+  max-width: 300px; 
+  max-height: 300px;
+  outline: 1px solid blue;
+  border-radius: 25px;
+  /* box-sizing: 600px; */
+  text-align:center;
+  position: relative;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  color: var(--color-primary);
+
+}
+.video-text button{
+  margin-top: 20px;
+
+  border-radius: 20px;
+  color: white;
+  background-color: var(--color-primary);
+  font-size: medium;
+  width: 50%;
+  position: relative;
+}
+
+
+/* latest news section css */
+.latestnews{
+  margin-top: 1rem;
+  text-align: center;
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+  color:var(--color-primary);
+ 
+}
+
+.cards{
+  
+  display: flex;
+  /* padding:.2.5 rem; */
+  justify-content: space-around;
+  align-items:flex-start; 
+  
+  flex-wrap:wrap;
+ 
+  
+  
+  
+}
+
+.card:hover{
+  transform: scale(1.1);
+}
+
+
+
+/* Card */
+.card {
+  max-width: 30rem;
+   height:520px;
+ 
+  border: 1px solid gray;
+  border-radius: 30px;
+
+  background-color: white;
+  box-shadow: 5px 5px 5px lightgray;
+  margin: 50px auto;
+}
+
+
+.card img {
+  
+  
+  border-radius: 25px 25px 0 0;
+}
+
+
+.info {
+  font-size: medium;
+  padding: 0 10px 32px 10px;
+  /* margin-top: 10px; */
+}
+.info h3{
+  text-align: center;
+}
+.info p{
+ margin-top: 10px;
+  text-align:center;
+}
+
+
+
+
+.info button {
+ 
+  margin-top: 10px;
+  width: 100%;
+  color: white;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 2px;
+  text-transform: capitalize;
+}
+
+/* latest news section end */
+
+
+/* follow us section start */
+.followus{
+text-transform: uppercase;
+  height: auto;
+  background-color:rgb(40, 186, 226);
+  color:var(--color-primary);
+  font-size: large;
+  text-align: center;
+  padding: 30px;
+
+}
+.social-media-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+ }
+ .social-icon{
+  height: 2rem;
+  min-height: 2rem;
+  filter: invert(100%);
+  margin: 1rem 1rem;
+ }
+ 
+ 
+ .image-gallary{
+  display: flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+ 
+ 
+}
+.image{
+  width:25%;
+  /* margin-right: 10px; */
+  border-radius: 5px;
+}
+.image:hover{
+  transform: scale(1.1);
+}
+
+
+
+.show-more{
+  /* background-color: #FFD700; */
+  color: blue;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+ /* follow us section end here   */
+
+
+  
+
+  
+
+
+button:hover{
+  background-color:lightblue;
+  color:#0000ff;
+  /* transform: scale(1.2); */
+  
+ }
+ a:hover{
+  transform: scale(1.1);
+ }
+
+
+.menu a:hover{
+ 
+  text-decoration: underline #06168e;
+  
+
+
+ 
+ }
+
+
+
+/*  sign up form */
+.signup{
+  display: flex;
+  flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+ 
+ 
+
+}
+
+.signup h1,p{
+  
+ text-align: center;
+  
+ 
+  color:var(--color-primary);
+/*    
+  display: inline-block; */
+}
+
+
+.signup input[type="name"],input[type="email"]{
+ 
+
+  width: 50%;
+  padding: 10px;
+  margin: 10px 100px 10px 100px;
+  border: 1px solid blue;
+  border-radius: 10px;
+
+
+  
+  
+}
+.signup button{
+  
+  /* width:max-content; */
+  padding: 15px;
+  /* margin-left: 200px; */
+  color:white;
+  background-color: blue;
+
+  border-radius: 10px;
+  cursor: pointer;
+}
+.signup button:hover{
+  background-color:lightblue;
+  color:#0000ff;
+  transform: scale(1.2); 
+  
+ }
+
+/* footer section */
+
+
+ .footer{
+  
+ 
+  background:url("../images/london-hyde-park-winter-wonderland\ 1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+   /* position: fixed;
+   z-index: 1000; */
+
+ } 
+
+
+
+ .about-image {
+  height: 50vh;
+  width: 100%;
+  background-image:url("../images/rides\ and\ games.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.about-image h1 {
+  text-align: center;
+  padding-top: 100px;
+  color: blue;
+ 
+}
+
+.about-text h3{
+  margin-top: 20px;
+  color: blue;
+  font-size: larger;
+  text-align: center;
+  margin-bottom: 20px;
+
+}
+
+
+
+.thingtodo{
+  height: 50vh;
+  width: 100%;
+  background: url("../images/carousel_image1.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.video {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.7); */
+}
+
+.video-content {
+  position:absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: #fff; */
+
+ 
+  
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 50px;
+  cursor: pointer;
+}
+
